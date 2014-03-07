@@ -87,7 +87,7 @@ namespace TestSounds
             //mediaElement.Play();
             String input = InputText.Text;
             OutputText.Text = ChangeString(input);
-
+            Clipboard.SetText(OutputText.Text);
             NotificationText.Text = "Copied";
 
           //  ShellToast toast = new ShellToast();
