@@ -34,11 +34,13 @@
                     Height="100"
                     Width="100"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Top"
                     Background="Blue"
-                    Click="PlayAudioButton_Click_1">
+                    Click="PlayAudioButton_Click_1">                 
                 Click Me
             </Button>
+            
+            <TextBlock Name="NotificationText" Text=" " Height="100" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
             <MediaElement x:Name="mediaElement"
                           Source="/Assets/Alarm09.wav"
                           Volume="1"

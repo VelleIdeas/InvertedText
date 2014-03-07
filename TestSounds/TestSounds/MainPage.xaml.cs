@@ -72,6 +72,13 @@ namespace TestSounds
             //mediaElement.Play();
             String input = InputText.Text;
             OutputText.Text = ChangeString(input);
+
+            NotificationText.Text = "Copied";
+
+          //  ShellToast toast = new ShellToast();
+          //  toast.Title = "Inverted text";
+          //  toast.Content = "ho gaya invert";
+          //  toast.Show();
         }
 
         private String ChangeString(String inputString)
