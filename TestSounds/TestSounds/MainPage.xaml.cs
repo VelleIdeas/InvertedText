@@ -14,100 +14,23 @@ namespace TestSounds
     public partial class MainPage : PhoneApplicationPage
     {
         // Constructor
-        Dictionary<char, char> conversionTable1;
-        Dictionary<char, char> conversionTable2;
+        Converter stringConverter;
         public MainPage()
         {
             InitializeComponent();
-            conversionTable1 = new Dictionary<char, char>();
-            conversionTable2 = new Dictionary<char, char>();
-            InitializeConversionTables();
+            stringConverter = new Converter();
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
-
-        private void InitializeConversionTables()
-        {
-            conversionTable1.Add('a', '\u0250');
-            conversionTable1.Add('b', 'q');
-            conversionTable1.Add('c', '\u0254'); //open o -- from pne
-            conversionTable1.Add('d', 'p');
-            conversionTable1.Add('e', '\u01DD');
-            conversionTable1.Add('f', '\u025F'); //from pne
-            conversionTable1.Add('g', '\u0183');
-            conversionTable1.Add('h', '\u0265');
-            conversionTable1.Add('i', '\u0131'); //from pne
-            conversionTable1.Add('j', '\u027E');
-            conversionTable1.Add('k', '\u029E');
-            conversionTable1.Add('m', '\u026F');
-            conversionTable1.Add('n', 'u');
-            conversionTable1.Add('r', '\u0279');
-            conversionTable1.Add('t', '\u0287');
-            conversionTable1.Add('v', '\u028C');
-            conversionTable1.Add('w', '\u028D');
-            conversionTable1.Add('y', '\u028E');
-            conversionTable1.Add('.', '\u02D9');
-            conversionTable1.Add('[', ']');
-            conversionTable1.Add('(', ')');
-            conversionTable1.Add('{', '}');
-            conversionTable1.Add('?', '\u00BF');
-            conversionTable1.Add('!', '\u00A1');
-            conversionTable1.Add('\'', ',');
-            conversionTable1.Add('<', '>');
-            conversionTable1.Add('_', '\u203E');
-            conversionTable1.Add(';', '\u061B');
-            conversionTable1.Add('\u203F', '\u2040');
-            conversionTable1.Add('\u2045', '\u2046');
-            conversionTable1.Add('\u2234', '\u2235');
-            conversionTable1.Add('\r', '\n');
-            conversionTable1.Add('A', '\u2200');
-            conversionTable1.Add('C', '\u0186');
-            conversionTable1.Add('E', '\u018E');
-            conversionTable1.Add('F', '\u2132');
-            conversionTable1.Add('G', '\u05E4');
-            conversionTable1.Add('J', '\u017F');
-            conversionTable1.Add('K', '\u22CA');
-            conversionTable1.Add('L', '\u02E5');
-            conversionTable1.Add('M', 'W');
-            conversionTable1.Add('P', '\u0500');
-            conversionTable1.Add('T', '\u2534');
-            conversionTable1.Add('U', '\u2229');
-            conversionTable1.Add('V', '\u039B');
-            conversionTable1.Add('W', 'M');
-            conversionTable1.Add('Y', '\u2144');
-
-            foreach (KeyValuePair<char, char> item in conversionTable1)
-            {
-                conversionTable2.Add(item.Value, item.Key);
-            }
-
-        }
+        
         private void PlayAudioButton_Click_1(object sender, RoutedEventArgs e)
         {
             //mediaElement.Play();
             String input = InputText.Text;
-            OutputText.Text = ChangeString(input);
-            Clipboard.SetText(OutputText.Text);
+            OutputText.Text = Converter.InvertString(input);
+            Clipboard.SetText(OutputText.Text); // Copy the string to clipboard
             NotificationText.Text = "Copied";
 
-          //  ShellToast toast = new ShellToast();
-          //  toast.Title = "Inverted text";
-          //  toast.Content = "ho gaya invert";
-          //  toast.Show();
-        }
-
-        private String ChangeString(String inputString)
-        {
-            int last = inputString.Length - 1;
-            char[] chars = inputString.ToCharArray();
-            for (var i = last; i >= 0; --i) 
-            {
-                char c = inputString[i];
-                chars[last - i] = conversionTable1.ContainsKey(c) ? conversionTable1[c] : (conversionTable2.ContainsKey(c) ? conversionTable2[c] : c);
-            }
-
-            String outputString = new String(chars);
-            return outputString;
         }
         
     }
