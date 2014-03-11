@@ -35,8 +35,9 @@
                     Width="100"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
-                    Background="Blue"
-                    Click="PlayAudioButton_Click_1">                 
+                    Background="{StaticResource PhoneAccentBrush}"
+                    BorderThickness="0"
+                    Click="PlayAudioButton_Click_1" Margin="3" >                 
                 Click Me
             </Button>
             
